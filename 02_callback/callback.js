@@ -8,8 +8,12 @@ const buySync = (item, price, quantity, callback) => {
   }, 3000);
 };
 
-const pay = (total) => {
-  console.log(`${total} 원을 지불하였습니다.`);
-};
+// const pay = (total) => {
+//   console.log(`${total} 원을 지불하였습니다.`);
+// };
 
-buySync('포켓몬빵', 1000, 5, pay);
+// buySync('포켓몬빵', 1000, 5, pay);
+
+buySync('포켓몬빵', 1000, 5, (total) => {
+  console.log(`${total} 원 입니다`);
+});
