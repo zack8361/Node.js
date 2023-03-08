@@ -12,7 +12,8 @@ app.use(cors());
 
 // "/" 이 요청되면 안의 함수를 실행해라
 app.use('/', (req, res) => {
-  const str = '안녕하세요. 여기는 백엔드 입니다!';
+  const str =
+    'hehehehehhehehe 눈asdfsadfasdfsdfsdfs 사람 눈 사람 눈 사람 ehhehehhehehhee!';
   const json = JSON.stringify(str);
   res.send(json);
 });
