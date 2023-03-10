@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>회원 목록</h1>
+  <h2>총 게시글수 : <%= boardCounts %></h2>
+  <ul>
+    <% if(boardCounts>0) { %>
+    <% for(let i=0; i<boardCounts; i++) { %>
+    <li>
+      <p>text : <%= BOARD[i].title %></p>
+      <p>이름 : <%= BOARD[i].content %></p>
+    </li>
+    <% } %>
+    <% } else { %>
+    <li>회원정보가 없습니다.</li>
+    <% } %>
+  </ul>
+  <h1> 글목록을 보여주는 페이지</h1>
+  <form action="posts/add" method="post">
+    <div>
+      <label>title</label>
+      <input type="text" name="title" />
+    </div>
+    <div>
+      <label>content</label>
+      <input type="text" name="content" />
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+
+</html>

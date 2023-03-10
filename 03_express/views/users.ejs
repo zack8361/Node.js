@@ -20,13 +20,46 @@
       <p>ID : <%= USER[i].id %></p>
       <p>이름 : <%= USER[i].name %></p>
       <p>email: <%= USER[i].email %></p>
+      <a href="javascript:void(0)" onclick="deleteUser('<%= USER[i].id %>')"> 삭제</a>
     </li>
     <% } %>
     <% } else { %>
     <li>회원정보가 없습니다.</li>
     <% } %>
   </ul>
+  <!-- 회원 추가 -->
+  <!-- FORM 태그 안의 버튼 타입 submit으로 보낼수있다. -->
+  <form action=" /users/add" method="post">
+    <div>
+      <label>아이디</label>
+      <input type="text" name="id" />
+    </div>
+    <div>
+      <label>이름</label>
+      <input type="text" name="name" />
+    </div>
+    <div>
+      <label>이메일</label>
+      <input type="email" name="email" />
+    </div>
+    <button type="submit">Submit</button>
+  </form>
   <img src="/images/puppy.jpeg" alt="강아지">
+  <script>
+    //위에서 보낸 onclick 이벤트 함수 deleteUser
+    async function deleteUser(id) {
+      const response = await fetch(`http://localhost:4000/users/delete/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+        }
+      })
+      if (response.status === 200) {
+        return location.reload();
+      }
+      console.log(response)
+    }
+  </script>
 </body>
 
 </html>
