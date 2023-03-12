@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=\, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>여기는 userPage 입니다.</h1>
+  <h2>user 목록</h2>
+  <h2>총회원수 : <%= usersCount %></h2>
+  <ul>
+    <% for(let i=0; i<usersCount; i++) { %>
+    <li>
+      <p> 이름 : <%= users[i].name %></p>
+    </li>
+    <% } %>
+  </ul>
+  <br>
+  <hr>
+  <h1>회원 추가하기</h1>
+  <!-- 회원 추가  -->
+  <!-- FORM 태그 안의 버튼 타입 submit 으로 백엔드로 보낸다. -->
+  <form action="/users/add" method="post">
+    <div>
+      <label> 이름 : </label>
+      <input type="text" name="name">
+      <button type="submit">저장</button>
+    </div>
+  </form>
+</body>
+
+</html>
