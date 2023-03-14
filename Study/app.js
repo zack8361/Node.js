@@ -2,6 +2,8 @@
 const express = require('express');
 // bodyParser 설정
 const bodyParser = require('body-parser');
+// session 설정
+const session = require('express-session');
 
 const app = express();
 const PORT = 4000;
@@ -13,6 +15,17 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// session 사용
+app.use(
+  session({
+    secret: 'tetz',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 1000 * 60 * 60,
+    },
+  })
+);
 // 라우터 설정 : 각자 이름의 부합한 라우터.
 const boardRouter = require('./routes/board');
 // home router 설정
