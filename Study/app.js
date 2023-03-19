@@ -15,9 +15,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // 라우터 설정 : 각자 이름의 부합한 라우터.
 const boardRouter = require('./routes/board');
-
+// home router 설정
+const homeRouter = require('./routes/home');
 // 라우터들을 위한 미들웨어 설정 : app.use
 app.use('/board', boardRouter);
+app.use('/', homeRouter);
 
 app.listen(PORT, () => {
   console.log(`${PORT} 포트에서 실행중입니다.`);

@@ -1,6 +1,5 @@
 // express 설정
 const express = require('express');
-const { writeArticle } = require('../controllers/boardController');
 
 // boardDB -> boardController 불러오기
 const boardDB = require('../controllers/boardController');
@@ -30,9 +29,32 @@ router.post('/write', (req, res) => {
   });
 });
 
-// // 수정하는 칸으로 이동하기
-// router.get('/modify', (req, res) => {
-//   res.render('board_modify');
-// });
-// router exports
+// 수정 하는 칸으로 이동하기.
+router.get('/modify/:id', (req, res) => {
+  boardDB.getArticle(req.params.id, (data) => {
+    const selectedArticle = data[0];
+    console.log(selectedArticle);
+    res.render('board_modify', { selectedArticle });
+  });
+});
+
+// 실제로 수정하기 (post)
+router.post('/modify/:id', (req, res) => {
+  console.log('왔음? 수정하는 공간임.');
+  boardDB.modifyArticle(req.params.id, req.body, (data) => {
+    if (data.affectedRows >= 1) {
+      res.redirect('/board');
+    }
+  });
+});
+
+// 삭제하기(delete)
+
+router.delete('/delete/:id', (req, res) => {
+  boardDB.deleteArticle(req.params.id, (data) => {
+    if (data.affectedRows >= 1) {
+      res.redirect('/board');
+    }
+  });
+});
 module.exports = router;

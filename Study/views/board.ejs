@@ -151,14 +151,14 @@
   </div>
   <script>
     const deleteArticle = (ID_PK) => {
-      fetch(`/dbBoard/delete/${ID_PK}`, {
+      fetch(`/board/delete/${ID_PK}`, {
           method: "delete",
           headers: {
             'Content-type': 'application/json'
           },
         })
         .then((res) => {
-          location.href = '/dbBoard'
+          location.href = '/board'
           alert("삭제 하시겠습니까?")
         })
     }
