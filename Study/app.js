@@ -17,7 +17,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const boardRouter = require('./routes/board');
 // home router 설정
 const homeRouter = require('./routes/home');
+// login router 설정
+const loginRouter = require('./routes/login');
+// register router 설정
+const registerRouter = require('./routes/register');
+
 // 라우터들을 위한 미들웨어 설정 : app.use
+app.use('/register', registerRouter);
+app.use('/login', loginRouter);
 app.use('/board', boardRouter);
 app.use('/', homeRouter);
 
