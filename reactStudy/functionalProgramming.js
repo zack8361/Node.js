@@ -36,11 +36,11 @@ console.log(userArray);
 const ages = [10, 20, 30, 40, 50, 60, 70];
 
 const maxAges = ages.reduce((max, age, idx) => {
-  if (age > max) {
-    return age;
-  } else {
+  console.log(max);
+  if (max > age) {
     return max;
   }
-});
-
-console.log(maxAges);
+  return age;
+}, 0);
+//최초의 비교를 0 과 ages[0]과 비교를 한다.
+console.log(`maxAges : ${maxAges}`);
