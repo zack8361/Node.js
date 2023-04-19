@@ -68,7 +68,8 @@ const colors = [
   },
 ];
 const hashColors = colors.reduce((hash, { id, title, rating }) => {
-  console.log(id);
-});
+  hash[id] = { title, rating };
+  return hash;
+}, {});
 
 console.log(hashColors);

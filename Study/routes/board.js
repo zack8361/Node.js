@@ -16,6 +16,7 @@ const isLogin = (req, res, next) => {
     );
   }
 };
+
 // 전체 조회
 router.get('/', isLogin, (req, res) => {
   boardDB.getAllArticles((data) => {
